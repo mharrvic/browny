@@ -1,3 +1,4 @@
+import { generateSongList } from "@/utils/openai";
 import type { GoogleBooksResponse } from "src/types/books";
 import { z } from "zod";
 
@@ -15,6 +16,15 @@ export const booksRouter = createTRPCRouter({
       );
       const bookJson = (await book.json()) as GoogleBooksResponse;
       return bookJson;
+    }),
+
+  generatePlaylist: publicProcedure
+    .input(z.object({ title: z.string(), description: z.string() }))
+    .mutation(async ({ input }) => {
+      const { title, description } = input;
+      const list = await generateSongList(title, description);
+
+      return list;
     }),
 
   getAll: publicProcedure.query(({ ctx }) => {
