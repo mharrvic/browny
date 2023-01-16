@@ -8,6 +8,7 @@ import { Provider as RWBProvider } from "react-wrap-balancer";
 import { api } from "../utils/api";
 
 import clsx from "clsx";
+import { Toaster } from "react-hot-toast";
 import "../styles/globals.css";
 
 const sfPro = localFont({
@@ -29,6 +30,7 @@ const MyApp: AppType<{ session: Session | null }> = ({
       <RWBProvider>
         <main className={clsx(sfPro.variable, inter.variable)}>
           <Component {...pageProps} />
+          <Toaster />
         </main>
       </RWBProvider>
     </SessionProvider>
