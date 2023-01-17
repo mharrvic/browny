@@ -21,7 +21,8 @@
       "@/pages/*": ["src/pages/*"],
       "@/lib/*": ["src/lib/*"],
       "@/utils/*": ["src/utils/*"],
-      "@/styles/*": ["src/styles/*"]
+      "@/styles/*": ["src/styles/*"],
+      "@/env/*": ["src/env/*"]
     }
   },
   "include": [

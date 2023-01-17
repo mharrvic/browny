@@ -36,7 +36,7 @@ export default async function handler(req: NextRequest) {
             "../../../public/browny.png",
             import.meta.url
           ).toString()}
-          alt="Precedent Logo"
+          alt="Browny Logo"
           tw="w-20 h-20 mb-4 opacity-95"
         />
         <h1

@@ -20,12 +20,12 @@ const PlaylistModal = ({
     <Modal showModal={showPlaylistModal} setShowModal={setShowPlaylistModal}>
       <div className="w-full overflow-hidden shadow-xl sm:max-w-md sm:rounded-2xl sm:border sm:border-gray-100">
         <div className="flex flex-col items-center justify-center space-y-3 bg-white px-4 py-6 pt-8 text-center sm:px-16">
-          <a href="https://precedent.vercel.app">
+          <a href="#">
             <Image
               src={
                 details?.volumeInfo?.imageLinks?.thumbnail || "/no-cover.png"
               }
-              alt="Precedent Logo"
+              alt={details.volumeInfo?.title ?? ""}
               className="h-10 w-10 rounded-full"
               width={20}
               height={20}
