@@ -32,7 +32,10 @@ export default function Home() {
           className="mt-6 text-center text-gray-500 md:text-xl"
           variants={FADE_DOWN_ANIMATION_VARIANTS}
         >
-          <Balancer>Search any book title to get a playlist of songs</Balancer>
+          <Balancer>
+            Search any book title to get the generated music playlist. Powered
+            by AI.
+          </Balancer>
         </motion.p>
       </motion.div>
 

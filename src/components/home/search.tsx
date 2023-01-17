@@ -70,7 +70,7 @@ const Search = () => {
       <PlaylistModal />
       <form onSubmit={handleSubmit(onSubmit)} className="w-11/12 md:w-1/3">
         <label className="mb-2 block text-3xl font-medium text-white">
-          Search anything
+          Search any book
         </label>
         <div className="mt-1 flex rounded-md shadow-sm">
           <div className="relative flex flex-grow items-stretch focus-within:z-10">
