@@ -3,7 +3,7 @@ import Head from "next/head";
 const DOMAIN = "https://browny.mharrvic.com";
 
 export default function Meta({
-  title = "Browny - Turn Books into Playlist",
+  title = "Browny - Turn Books into Playlists",
   description = "Browny is a free tool that turns books titles into playlist.",
   image = `${DOMAIN}/api/og`,
 }: {
