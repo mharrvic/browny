@@ -48,6 +48,7 @@ const PlaylistModal = ({
 export function usePlaylistModal() {
   const [showPlaylistModal, setShowPlaylistModal] = useState(false);
   const [playlist, setPlaylist] = useState("");
+  // @ts-ignore
   const [details, setDetails] = useState<BookItem>({ title: "" });
 
   const PlaylistModalCallback = useCallback(() => {
@@ -59,7 +60,7 @@ export function usePlaylistModal() {
         setShowPlaylistModal={setShowPlaylistModal}
       />
     );
-  }, [showPlaylistModal, setShowPlaylistModal]);
+  }, [details, playlist, showPlaylistModal]);
 
   return useMemo(
     () => ({
