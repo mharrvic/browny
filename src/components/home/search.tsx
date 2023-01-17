@@ -18,6 +18,7 @@ type Inputs = {
 };
 
 const Search = () => {
+  // @ts-ignore
   const [selectedBook, setSelectedBook] = useState<BookItem>({});
   const { register, handleSubmit } = useForm<Inputs>();
 
@@ -138,7 +139,6 @@ const Search = () => {
                             }
                           )}
                           {...FADE_IN_ANIMATION_SETTINGS}
-                          // eslint-disable-next-line @typescript-eslint/no-misused-promises
                           onClick={async () => {
                             await handleOnGenerate({
                               title: item.volumeInfo.title,
