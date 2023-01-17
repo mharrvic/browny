@@ -85,7 +85,7 @@ const Search = () => {
               name="book"
               id="book"
               className="block h-16 w-full rounded-none rounded-l-md border border-gray-300 pl-10 text-gray-700 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
-              placeholder="Search anything"
+              placeholder="Search any book"
               disabled={isLoading}
             />
           </div>
