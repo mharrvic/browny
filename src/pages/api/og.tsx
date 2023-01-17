@@ -14,7 +14,7 @@ export default async function handler(req: NextRequest) {
   const [sfProData] = await Promise.all([sfPro]);
 
   const { searchParams } = req.nextUrl;
-  const title = searchParams.get("title") || "Precedent";
+  const title = searchParams.get("title") || "Browny <3";
 
   return new ImageResponse(
     (
