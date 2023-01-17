@@ -1,14 +1,8 @@
-import { FADE_IN_ANIMATION_SETTINGS } from "@/lib/constants";
 import useScroll from "@/lib/hooks/use-scroll";
-import { AnimatePresence, motion } from "framer-motion";
-import { useSession } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
 import type { ReactNode } from "react";
 import Meta from "./meta";
-import { useSignInModal } from "./sign-in-modal";
-
-import UserDropdown from "./user-dropdown";
 
 export default function Layout({
   meta,
@@ -21,14 +15,11 @@ export default function Layout({
   };
   children: ReactNode;
 }) {
-  const { data: session, status } = useSession();
-  const { SignInModal, setShowSignInModal } = useSignInModal();
   const scrolled = useScroll(50);
 
   return (
     <>
       <Meta {...meta} />
-      <SignInModal />
       <div className="fixed h-screen w-screen bg-gradient-to-br from-indigo-50 via-white to-purple-100" />
       <div
         className={`fixed top-0 w-full ${
@@ -38,31 +29,17 @@ export default function Layout({
         } z-30 transition-all`}
       >
         <div className="mx-5 flex h-16 max-w-screen-xl items-center justify-between xl:mx-auto">
-          <Link href="/" className="font-display flex items-center text-2xl">
+          <Link href="/" className="flex items-center font-display text-2xl">
             <Image
-              src="/logo.png"
+              src="/browny.png"
               alt="Logo image of a chat bubble"
               width="30"
               height="30"
               className="mr-2 rounded-sm"
             ></Image>
-            <p>Mac Book Playlist</p>
+            <p>Browny</p>
           </Link>
-          <div>
-            <AnimatePresence>
-              {!session && status !== "loading" ? (
-                <motion.button
-                  className="rounded-full border border-black bg-black p-1.5 px-4 text-sm text-white transition-all hover:bg-white hover:text-black"
-                  onClick={() => setShowSignInModal(true)}
-                  {...FADE_IN_ANIMATION_SETTINGS}
-                >
-                  Sign In
-                </motion.button>
-              ) : (
-                <UserDropdown />
-              )}
-            </AnimatePresence>
-          </div>
+          <div></div>
         </div>
       </div>
       <main className="flex w-screen flex-col items-center justify-center py-32">

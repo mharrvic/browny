@@ -1,10 +1,10 @@
 import Head from "next/head";
 
-const DOMAIN = "https://precedent.vercel.app";
+const DOMAIN = "https://browny.mharrvic.com";
 
 export default function Meta({
-  title = "Precedent - Building blocks for your Next.js project",
-  description = "Precedent is the all-in-one solution for your Next.js project. It includes a design system, authentication, analytics, and more.",
+  title = "Browny - Turn Books into Playlist",
+  description = "Browny is a free tool that turns books titles into playlist.",
   image = `${DOMAIN}/api/og`,
 }: {
   title?: string;
@@ -20,14 +20,14 @@ export default function Meta({
       <meta charSet="utf-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1" />
       <meta itemProp="image" content={image} />
-      <meta property="og:logo" content={`${DOMAIN}/logo.png`}></meta>
+      <meta property="og:logo" content={`${DOMAIN}/browny.png`}></meta>
       <meta property="og:title" content={title} />
       <meta property="og:description" content={description} />
       <meta property="og:image" content={image} />
 
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:site" content="@vercel" />
-      <meta name="twitter:creator" content="@steventey" />
+      <meta name="twitter:creator" content="@mharrvic" />
       <meta name="twitter:title" content={title} />
       <meta name="twitter:description" content={description} />
       <meta name="twitter:image" content={image} />

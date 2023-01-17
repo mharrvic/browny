@@ -21,7 +21,7 @@ const DemoModal = ({
         <div className="flex flex-col items-center justify-center space-y-3 bg-white px-4 py-6 pt-8 text-center sm:px-16">
           <a href="https://precedent.vercel.app">
             <Image
-              src="/logo.png"
+              src="/browny.png"
               alt="Precedent Logo"
               className="h-10 w-10 rounded-full"
               width={20}
