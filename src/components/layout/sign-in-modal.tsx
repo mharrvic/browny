@@ -44,7 +44,7 @@ const SignInModal = ({
             } flex h-10 w-full items-center justify-center space-x-3 rounded-md border text-sm shadow-sm transition-all duration-75 focus:outline-none`}
             onClick={() => {
               setSignInClicked(true);
-              signIn("google");
+              signIn("spotify");
             }}
           >
             {signInClicked ? (
@@ -52,12 +52,12 @@ const SignInModal = ({
             ) : (
               <>
                 <Image
-                  alt="Chrome logo"
-                  src="/chrome.svg"
+                  alt="Spotify logo"
+                  src="/spotify.png"
                   width={20}
                   height={20}
                 />
-                <p>Sign In with Google</p>
+                <p>Sign In with Spotify</p>
               </>
             )}
           </button>
