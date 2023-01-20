@@ -92,7 +92,7 @@ function BookItem() {
 
   const handleOnCreatePlaylist = async () => {
     toast.loading("Creating spotify playlist...");
-    if (generatedPlaylist && data && mergedBookInfo) {
+    if (data && mergedBookInfo) {
       await createPlaylistMutateAsync({
         name: mergedBookInfo.title,
         description: `Playlist generated from ${
