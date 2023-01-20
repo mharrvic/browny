@@ -171,7 +171,7 @@ function BookItem() {
               {data.volumeInfo.authors?.join(", ")}
             </motion.p>
             <motion.div
-              className="mt-8 flex gap-4"
+              className="mt-8 flex flex-wrap gap-4"
               variants={FADE_DOWN_ANIMATION_VARIANTS}
             >
               <motion.button
@@ -233,7 +233,7 @@ function BookItem() {
                     width={20}
                     height={20}
                   />
-                  <p>Sign in with Spotify</p>
+                  <p>Sign in with Spotify to save playlist</p>
                 </motion.button>
               )}
             </motion.div>
