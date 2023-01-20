@@ -128,7 +128,14 @@ function BookItem() {
           className="relative flex items-start lg:col-span-5 lg:row-span-2"
           variants={FADE_DOWN_ANIMATION_VARIANTS}
         >
-          <div className="relative z-10 mx-auto flex w-64 rounded-xl bg-slate-600 shadow-xl md:w-80 lg:w-auto">
+          <div
+            className={clsx(
+              "relative z-10 mx-auto flex w-64 rounded-xl bg-slate-600 shadow-xl md:w-80 lg:w-auto",
+              {
+                "animate-pulse": isGeneratePlaylistLoading,
+              }
+            )}
+          >
             <Image
               className="w-60"
               src={
