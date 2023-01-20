@@ -6,6 +6,10 @@ module.exports = {
 
   theme: {
     extend: {
+      colors: {
+        "browny-brown": "#FD9822",
+        greeny: "#CFCC15",
+      },
       fontFamily: {
         display: ["var(--font-sf)", "system-ui", "sans-serif"],
         default: ["var(--font-inter)", "system-ui", "sans-serif"],
