@@ -2,11 +2,11 @@ import { BookOpenIcon, MagnifyingGlassIcon } from "@heroicons/react/20/solid";
 
 import LoadingDots from "@/components/common/icons/loading-dots";
 import { api } from "@/utils/api";
+import clsx from "clsx";
 import Image from "next/image";
 import Link from "next/link";
 import type { SubmitHandler } from "react-hook-form";
 import { useForm } from "react-hook-form";
-import { usePlaylistModal } from "./playlist-modal";
 
 type Inputs = {
   book: string;
@@ -14,9 +14,6 @@ type Inputs = {
 
 const Search = () => {
   const { register, handleSubmit } = useForm<Inputs>();
-
-  const { setShowPlaylistModal, PlaylistModal, setDetails, setPlaylist } =
-    usePlaylistModal();
 
   const {
     isLoading,
@@ -36,12 +33,15 @@ const Search = () => {
 
   return (
     <>
-      <PlaylistModal />
       <form onSubmit={handleSubmit(onSubmit)} className="w-11/12 md:w-1/3">
         <label className="mb-2 block text-3xl font-medium text-white">
           Search any book
         </label>
-        <div className="mt-1 flex rounded-md shadow-sm">
+        <div
+          className={clsx("mt-1 flex rounded-md shadow-sm", {
+            "animate-pulse": isLoading,
+          })}
+        >
           <div className="relative flex flex-grow items-stretch focus-within:z-10">
             <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
               <BookOpenIcon
@@ -62,13 +62,12 @@ const Search = () => {
             type="button"
             className="relative -ml-px inline-flex items-center space-x-2 rounded-r-md border border-gray-300 bg-gray-50 px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 focus:border-amber-500 focus:outline-none focus:ring-1 focus:ring-amber-500"
             onClick={handleSubmit(onSubmit)}
-            disabled={status === "loading" || status === "idle"}
+            disabled={status === "loading"}
           >
             <MagnifyingGlassIcon
               className="h-5 w-5 text-gray-400"
               aria-hidden="true"
             />
-            {/* <span>{isLoading ? "Loading" : "Submit"}</span> */}
           </button>
         </div>
       </form>
@@ -79,39 +78,41 @@ const Search = () => {
             <LoadingDots />
           </div>
         ) : (
-          <div className="my-10 grid max-w-screen-xl animate-[slide-down-fade_0.5s_ease-in-out] grid-cols-2 gap-5 px-5 md:grid-cols-3 xl:px-0">
-            {books?.items.map((item) => {
-              return (
-                <Link
-                  key={item.id}
-                  className="relative col-span-1 w-40 overflow-hidden rounded-xl border border-gray-200 bg-white shadow-md"
-                  href={`/book/${item.id}`}
-                >
-                  <div className="h-60 w-full">
-                    <Image
-                      src={
-                        item?.volumeInfo?.imageLinks?.thumbnail ||
-                        "/no-cover.png"
-                      }
-                      alt={item.volumeInfo.title}
-                      width={300}
-                      height={300}
-                    />
-                  </div>
-                  <div className="p-2">
-                    <p className="pb-2 font-semibold">
-                      {item.volumeInfo.title}
-                    </p>
-                    <p className="text-gray-500">
+          <div className="my-10 grid max-w-screen-xl animate-[slide-down-fade_0.5s_ease-in-out] grid-cols-1 gap-5 px-5 md:grid-cols-3 xl:px-0">
+            {books?.items.map((item) => (
+              <Link
+                key={item.id}
+                href={`/book/${item.id}`}
+                className="relative flex w-60 flex-col overflow-hidden rounded-lg shadow-lg transition-shadow duration-300 ease-in-out hover:shadow-2xl"
+              >
+                <div className="flex-shrink-0">
+                  <Image
+                    className="h-48 w-full object-cover"
+                    src={
+                      item?.volumeInfo?.imageLinks?.thumbnail || "/no-cover.png"
+                    }
+                    alt={item.volumeInfo.title}
+                    width={300}
+                    height={300}
+                  />
+                </div>
+                <div className="flex flex-1 flex-col justify-between bg-white p-6">
+                  <div className="flex-1">
+                    <p className="text-sm font-medium text-browny-brown">
                       {item.volumeInfo.publishedDate}
                     </p>
-                    <p className="text-gray-500 line-clamp-3">
-                      {item.volumeInfo.authors}
-                    </p>
+                    <div className="mt-2 block">
+                      <p className="text-xl font-semibold text-gray-900">
+                        {item.volumeInfo.title}
+                      </p>
+                      <p className="mt-3 text-base text-gray-500">
+                        {item.volumeInfo.authors}
+                      </p>
+                    </div>
                   </div>
-                </Link>
-              );
-            })}
+                </div>
+              </Link>
+            ))}
           </div>
         )}
       </div>
