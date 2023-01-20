@@ -30,7 +30,7 @@ model Account {
     providerAccountId String
     refresh_token     String? @db.Text
     access_token      String? @db.Text
-    expires_at        Int?
+    expires_at        Int
     token_type        String?
     scope             String?
     id_token          String? @db.Text
@@ -43,6 +43,7 @@ model Account {
 
 model Session {
     id           String   @id @default(cuid())
+    accessToken  String? @db.Text
     sessionToken String   @unique
     userId       String
     expires      DateTime
