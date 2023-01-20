@@ -8,7 +8,7 @@ const openai = new OpenAIApi(configuration);
 const MODEL = "text-davinci-003";
 
 export async function generateSongList(title: string, description: string) {
-  const songs = 10;
+  const songs = 20;
   const response = await openai.createCompletion({
     model: MODEL,
     prompt: `Instructions:
