@@ -2,7 +2,7 @@ import { usePlaylistModal } from "@/components/home/playlist-modal";
 import Layout from "@/components/layout/layout";
 import {
   FADE_DOWN_ANIMATION_VARIANTS,
-  FADE_IN_ANIMATION_SETTINGS
+  FADE_IN_ANIMATION_SETTINGS,
 } from "@/lib/constants";
 import { api } from "@/utils/api";
 import { sanitizeHtml } from "@/utils/sanitizeHtml";
@@ -94,8 +94,8 @@ function BookItem() {
     if (data) {
       await generatePlaylistMutateAsync({
         title: data.volumeInfo.title,
-        description: data.volumeInfo.description || "",
-        categories: data.volumeInfo.categories,
+        description: data.volumeInfo?.description ?? "",
+        categories: data.volumeInfo?.categories ?? ["General"],
       });
     }
   };
@@ -194,7 +194,7 @@ function BookItem() {
             >
               <motion.button
                 className={clsx(
-                  "hover:text-gray-700 animate-text rounded-full bg-gradient-to-br from-purple-500 via-browny-brown to-stone-500 p-1.5 px-6 py-4 text-sm text-white transition-all hover:bg-white",
+                  "animate-text rounded-full bg-gradient-to-br from-purple-500 via-browny-brown to-stone-500 p-1.5 px-6 py-4 text-sm text-white transition-all hover:bg-white hover:text-gray-700",
                   {
                     "animate-pulse cursor-not-allowed border-gray-500 bg-gray-400":
                       isGeneratePlaylistLoading,

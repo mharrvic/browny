@@ -26,7 +26,7 @@ export interface VolumeInfo {
   readingModes: ReadingModes;
   pageCount: number;
   printType: string;
-  categories: string[];
+  categories?: string[];
   maturityRating: string;
   allowAnonLogging: boolean;
   contentVersion: string;
