@@ -2,7 +2,11 @@
 
 This is a [T3 Stack](https://create.t3.gg/) project bootstrapped with `create-t3-app` and components from https://github.com/steven-tey/precedent
 
-![Browny](./browny-macbook.mp4)
+
+
+https://user-images.githubusercontent.com/15852818/213841634-4e5a22a8-ad89-4821-92ed-2d985ba88906.mp4
+
+
 
 ## How to use
 
