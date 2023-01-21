@@ -2,42 +2,50 @@ import Modal from "@/components/common/modal";
 import Image from "next/image";
 import type { Dispatch, SetStateAction } from "react";
 import { useCallback, useMemo, useState } from "react";
-import type { BookItem } from "src/types/books";
 
 const PlaylistModal = ({
-  playlist,
+  showModal,
+  setShowModal,
   details,
-  showPlaylistModal,
-  setShowPlaylistModal,
 }: {
-  playlist: string;
-  details: BookItem;
-  showPlaylistModal: boolean;
-  setShowPlaylistModal: Dispatch<SetStateAction<boolean>>;
+  details: {
+    title: string;
+    url: string;
+  };
+  showModal: boolean;
+  setShowModal: Dispatch<SetStateAction<boolean>>;
 }) => {
-  const list = playlist.split("\n");
   return (
-    <Modal showModal={showPlaylistModal} setShowModal={setShowPlaylistModal}>
-      <div className="w-full overflow-hidden shadow-xl sm:max-w-md sm:rounded-2xl sm:border sm:border-gray-100">
-        <div className="flex flex-col items-center justify-center space-y-3 bg-white px-4 py-6 pt-8 text-center sm:px-16">
-          <a href="#">
-            <Image
-              src={
-                details?.volumeInfo?.imageLinks?.thumbnail || "/no-cover.png"
-              }
-              alt={details.volumeInfo?.title ?? ""}
-              className="h-10 w-10 rounded-full"
-              width={20}
-              height={20}
-            />
-          </a>
+    <Modal showModal={showModal} setShowModal={setShowModal}>
+      <div className="w-full overflow-hidden shadow-xl sm:max-w-lg sm:rounded-2xl sm:border sm:border-gray-100">
+        <div className="flex flex-col items-center justify-center space-y-3 border-b border-gray-200 bg-white px-4 py-6 pt-8 text-center sm:px-16">
+          <Image
+            src="/spotify.png"
+            alt="Logo"
+            className="h-10 w-10 rounded-full"
+            width={20}
+            height={20}
+          />
+
           <h3 className="font-display text-2xl font-bold">
-            {details.volumeInfo?.title ?? ""}
+            {details.title} Playlist Created
           </h3>
-          <div className="text-left text-sm text-gray-500">
-            {list.map((song, index) => (
-              <p key={index}>{song}/</p>
-            ))}
+          <p className="text-gray-500">
+            Your playlist has been created on Spotify. Click the link below to
+            view it.
+          </p>
+        </div>
+
+        <div className="bg-gray-50 py-8 px-2">
+          <div className="text-center">
+            <a
+              href={details.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-browny-brown hover:underline"
+            >
+              {details.url}
+            </a>
           </div>
         </div>
       </div>
@@ -46,29 +54,24 @@ const PlaylistModal = ({
 };
 
 export function usePlaylistModal() {
-  const [showPlaylistModal, setShowPlaylistModal] = useState(false);
-  const [playlist, setPlaylist] = useState("");
-  // @ts-ignore
-  const [details, setDetails] = useState<BookItem>({ title: "" });
+  const [showModal, setShowModal] = useState(false);
+  const [details, setDetails] = useState({
+    title: "",
+    url: "",
+  });
 
-  const PlaylistModalCallback = useCallback(() => {
+  const ModalCallback = useCallback(() => {
     return (
       <PlaylistModal
         details={details}
-        playlist={playlist}
-        showPlaylistModal={showPlaylistModal}
-        setShowPlaylistModal={setShowPlaylistModal}
+        showModal={showModal}
+        setShowModal={setShowModal}
       />
     );
-  }, [details, playlist, showPlaylistModal]);
+  }, [details, showModal]);
 
   return useMemo(
-    () => ({
-      setShowPlaylistModal,
-      PlaylistModal: PlaylistModalCallback,
-      setPlaylist,
-      setDetails,
-    }),
-    [setShowPlaylistModal, PlaylistModalCallback, setPlaylist, setDetails]
+    () => ({ setShowModal, PlaylistModal: ModalCallback, setDetails }),
+    [setShowModal, ModalCallback, setDetails]
   );
 }

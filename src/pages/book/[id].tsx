@@ -1,3 +1,4 @@
+import { usePlaylistModal } from "@/components/home/playlist-modal";
 import Layout from "@/components/layout/layout";
 import {
   FADE_DOWN_ANIMATION_VARIANTS,
@@ -15,6 +16,7 @@ import { Book, userBookStore } from "src/state/book";
 
 function BookItem() {
   const [newBookGenerated, setNewBookGenerated] = useState<Book | null>(null);
+  const { PlaylistModal, setDetails, setShowModal } = usePlaylistModal();
   const store = userBookStore();
   const router = useRouter();
   const { id } = router.query;
@@ -73,6 +75,12 @@ function BookItem() {
     onSuccess: (createPlaylist) => {
       toast.remove();
       toast.success("Playlist created!");
+
+      setDetails({
+        title: mergedBookInfo?.title ?? "",
+        url: createPlaylist.createdPlaylist.external_urls.spotify,
+      });
+      setShowModal(true);
     },
     onError: (error) => {
       toast.remove();
@@ -109,6 +117,7 @@ function BookItem() {
 
   return (
     <Layout>
+      <PlaylistModal />
       <motion.div
         className="mx-auto grid h-screen max-w-6xl grid-cols-1 grid-rows-[auto_1fr] gap-y-16 md:pt-20 lg:grid-cols-12 lg:gap-y-20 lg:px-3 lg:pb-36 lg:pt-0 xl:py-32"
         initial="hidden"
@@ -186,7 +195,7 @@ function BookItem() {
                 {...FADE_IN_ANIMATION_SETTINGS}
                 disabled={isGeneratePlaylistLoading}
               >
-                {mergedBookInfo ? "Regenerate Playlist" : "Generate Playlist"}
+                {mergedBookInfo ? "Re-generate Playlist" : "Generate Playlist"}
               </motion.button>
 
               {session && mergedBookInfo && (
