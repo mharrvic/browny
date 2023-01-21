@@ -35,7 +35,6 @@
     "react-dom": "18.2.0",
     "react-hook-form": "^7.42.0",
     "react-hot-toast": "^2.4.0",
-    "react-markdown": "^8.0.4",
     "react-wrap-balancer": "^0.3.0",
     "superjson": "1.9.1",
     "zod": "^3.20.2",
