@@ -23,7 +23,7 @@ export default function Home() {
         }}
       >
         <motion.h1
-          className="bg-gradient-to-br from-browny-brown to-stone-500 bg-clip-text text-center font-display text-4xl font-bold tracking-[-0.02em] text-transparent drop-shadow-sm md:text-7xl md:leading-[5rem]"
+          className="animate-text bg-gradient-to-br from-purple-500 via-browny-brown to-stone-500 bg-clip-text text-center font-display text-4xl font-bold tracking-[-0.02em] text-transparent drop-shadow-sm md:text-7xl md:leading-[5rem]"
           variants={FADE_DOWN_ANIMATION_VARIANTS}
         >
           <Balancer>Turn Books into Playlists</Balancer>
@@ -33,8 +33,7 @@ export default function Home() {
           variants={FADE_DOWN_ANIMATION_VARIANTS}
         >
           <Balancer>
-            Search any book title to get the generated music playlist. Powered
-            by AI.
+            Search any book to get the generated music playlist. Powered by AI.
           </Balancer>
         </motion.p>
       </motion.div>

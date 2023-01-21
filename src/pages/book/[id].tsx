@@ -2,7 +2,7 @@ import { usePlaylistModal } from "@/components/home/playlist-modal";
 import Layout from "@/components/layout/layout";
 import {
   FADE_DOWN_ANIMATION_VARIANTS,
-  FADE_IN_ANIMATION_SETTINGS,
+  FADE_IN_ANIMATION_SETTINGS
 } from "@/lib/constants";
 import { api } from "@/utils/api";
 import { sanitizeHtml } from "@/utils/sanitizeHtml";
@@ -95,6 +95,7 @@ function BookItem() {
       await generatePlaylistMutateAsync({
         title: data.volumeInfo.title,
         description: data.volumeInfo.description || "",
+        categories: data.volumeInfo.categories,
       });
     }
   };
@@ -173,7 +174,7 @@ function BookItem() {
         <div className="bg-white pt-16 lg:col-span-7 lg:bg-transparent lg:pt-0 lg:pl-0 xl:pl-20">
           <div className="mx-auto px-4 sm:px-6 md:max-w-2xl md:px-4 lg:px-0">
             <motion.h1
-              className="bg-gradient-to-br from-browny-brown to-stone-500 bg-clip-text font-display text-5xl font-extrabold text-transparent  sm:text-6xl"
+              className="animate-text bg-gradient-to-br from-browny-brown via-purple-600 to-stone-500 bg-clip-text font-display text-5xl font-extrabold text-transparent  sm:text-6xl"
               variants={FADE_DOWN_ANIMATION_VARIANTS}
             >
               {data.volumeInfo.title}:{" "}
@@ -193,7 +194,7 @@ function BookItem() {
             >
               <motion.button
                 className={clsx(
-                  "rounded-full bg-gradient-to-br from-browny-brown to-stone-500 p-1.5 px-6 py-4 text-sm text-white transition-all hover:bg-white hover:text-black",
+                  "hover:text-gray-700 animate-text rounded-full bg-gradient-to-br from-purple-500 via-browny-brown to-stone-500 p-1.5 px-6 py-4 text-sm text-white transition-all hover:bg-white",
                   {
                     "animate-pulse cursor-not-allowed border-gray-500 bg-gray-400":
                       isGeneratePlaylistLoading,
