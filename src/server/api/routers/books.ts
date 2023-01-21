@@ -32,10 +32,20 @@ export const booksRouter = createTRPCRouter({
     }),
 
   generatePlaylist: publicProcedure
-    .input(z.object({ title: z.string(), description: z.string() }))
+    .input(
+      z.object({
+        title: z.string(),
+        description: z.string(),
+        categories: z.array(z.string()),
+      })
+    )
     .mutation(async ({ input }) => {
-      const { title, description } = input;
-      const rawSongList = await generateSongList(title, description);
+      const { title, description, categories } = input;
+      const rawSongList = await generateSongList(
+        title,
+        description,
+        categories
+      );
 
       const generatedSongList =
         rawSongList.choices[0]?.text?.split("\n").filter((item) => {
