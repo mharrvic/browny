@@ -6,6 +6,12 @@ module.exports = {
 
   theme: {
     extend: {
+      lineClamp: {
+        9: "9",
+        10: "10",
+        11: "11",
+        12: "12",
+      },
       colors: {
         "browny-brown": "#FD9822",
         greeny: "#CFCC15",
