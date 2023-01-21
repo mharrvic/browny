@@ -5,6 +5,7 @@ import {
   FADE_IN_ANIMATION_SETTINGS,
 } from "@/lib/constants";
 import { api } from "@/utils/api";
+import { sanitizeHtml } from "@/utils/sanitizeHtml";
 import clsx from "clsx";
 import { motion } from "framer-motion";
 import { signIn, useSession } from "next-auth/react";
@@ -134,7 +135,7 @@ function BookItem() {
         }}
       >
         <motion.div
-          className="relative flex items-start lg:col-span-5 lg:row-span-2"
+          className="relative flex flex-col items-start lg:col-span-5 lg:row-span-2"
           variants={FADE_DOWN_ANIMATION_VARIANTS}
         >
           <div
@@ -148,9 +149,9 @@ function BookItem() {
             <Image
               className="w-60"
               src={
-                data.volumeInfo.imageLinks?.small ||
                 data.volumeInfo.imageLinks?.medium ||
                 data.volumeInfo.imageLinks?.thumbnail ||
+                data.volumeInfo.imageLinks?.small ||
                 data.volumeInfo.imageLinks?.large ||
                 "/no-cover.png"
               }
@@ -159,6 +160,13 @@ function BookItem() {
               width={500}
               height={500}
             />
+          </div>
+          <div>
+            <div className="prose prose-lg p-4 line-clamp-10 hover:line-clamp-none">
+              {data.volumeInfo?.description
+                ? sanitizeHtml(data.volumeInfo.description)
+                : "No description available"}
+            </div>
           </div>
         </motion.div>
 
