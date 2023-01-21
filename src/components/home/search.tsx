@@ -20,11 +20,7 @@ const Search = () => {
     mutateAsync,
     data: books,
     status,
-  } = api.books.search.useMutation({
-    onSuccess: (data) => {
-      console.log({ data });
-    },
-  });
+  } = api.books.search.useMutation();
 
   const onSubmit: SubmitHandler<Inputs> = async (data) => {
     const { book } = data;
