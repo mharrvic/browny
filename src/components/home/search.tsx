@@ -35,7 +35,7 @@ const Search = () => {
     <>
       <form onSubmit={handleSubmit(onSubmit)} className="w-11/12 md:w-1/3">
         <label className="mb-2 block text-3xl font-medium text-white">
-          Search any book
+          Search any book / author / genre
         </label>
         <div
           className={clsx("mt-1 flex rounded-md shadow-sm", {
@@ -54,7 +54,7 @@ const Search = () => {
               name="book"
               id="book"
               className="block h-16 w-full rounded-none rounded-l-md border border-gray-300 pl-10 text-gray-700 focus:border-amber-500 focus:outline-none focus:ring-amber-500 sm:text-sm"
-              placeholder="Search any book"
+              placeholder="Search any book / author / genre"
               disabled={isLoading}
             />
           </div>
@@ -107,6 +107,9 @@ const Search = () => {
                       </p>
                       <p className="mt-3 text-base text-gray-500">
                         {item.volumeInfo.authors}
+                      </p>
+                      <p className="mt-2 text-base text-gray-400">
+                        {item.volumeInfo.categories}
                       </p>
                     </div>
                   </div>
