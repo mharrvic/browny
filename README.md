@@ -1,27 +1,41 @@
-# Create T3 App
+# Browny - Turn Books into Playlists
 
-This is a [T3 Stack](https://create.t3.gg/) project bootstrapped with `create-t3-app`.
+This is a [T3 Stack](https://create.t3.gg/) project bootstrapped with `create-t3-app` and components from https://github.com/steven-tey/precedent
 
-## What's next? How do I make an app with this?
+![Browny](./browny-macbook.mp4)
 
-We try to keep this project as simple as possible, so you can start with just the scaffolding we set up for you, and add additional things later when they become necessary.
+## How to use
 
-If you are not familiar with the different technologies used in this project, please refer to the respective docs. If you still are in the wind, please join our [Discord](https://t3.gg/discord) and ask for help.
+1. Search any books / authors / categories
+2. Select a book from the search results
+3. Click Generate Playlist to generate a playlist based on the book's title and description
+4. Review the generated results, feel free to re-generate the playlist if you don't like the results
+5. Click Sign in with Spotify to sign in to your Spotify account
+6. Click Save to Spotify playlist to save the playlist to your Spotify account
 
-- [Next.js](https://nextjs.org)
-- [NextAuth.js](https://next-auth.js.org)
-- [Prisma](https://prisma.io)
-- [Tailwind CSS](https://tailwindcss.com)
-- [tRPC](https://trpc.io)
+## Environment Setup
 
-## Learn More
+1. Create a `.env` file in the root directory of the project (refer to `.env.example`)
+2. Add the following environment variables to the `.env` file
 
-To learn more about the [T3 Stack](https://create.t3.gg/), take a look at the following resources:
+```
+DATABASE_URL=
+NEXTAUTH_SECRET=
+NEXTAUTH_URL=
 
-- [Documentation](https://create.t3.gg/)
-- [Learn the T3 Stack](https://create.t3.gg/en/faq#what-learning-resources-are-currently-available) — Check out these awesome tutorials
+SPOTIFY_CLIENT_ID=<your-spotify-client-id>
+SPOTIFY_CLIENT_SECRET=<your-spotify-client-secret>
 
-You can check out the [create-t3-app GitHub repository](https://github.com/t3-oss/create-t3-app) — your feedback and contributions are welcome!
+GOOGLE_BOOKS_API_KEY=<your-google-books-api-key>
+
+OPENAI_API_KEY=<your-openai-api-key>
+```
+
+4. Create a Spotify app at https://developer.spotify.com/dashboard/applications and get the client ID and secret
+
+5. Create a Google Books API key at https://developers.google.com/books/docs/v1/using
+
+6. Create an account at OpenAI at https://beta.openai.com/account/api-keys - and create an API key
 
 ## How do I deploy this?
 
